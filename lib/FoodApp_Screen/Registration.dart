@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:newapp/FoodApp_Screen/Login.dart';
+import 'package:newapp/Utils/colors.dart';
 
 
 import 'package:newapp/Widget/CustomShapeBorder.dart';
@@ -53,7 +54,7 @@ class _RegistrationState extends State<Registration> {
         backgroundColor: Colors.white,
         key: scaffoldKey,
         appBar: AppBar(
-          backgroundColor: Colors.green,
+          backgroundColor: greencolor,
           shape: CustomShapeBorder(),
           actions: <Widget>[
             Padding(padding:EdgeInsets.only(top: 20, left: 15, right: 15), )
@@ -105,7 +106,7 @@ class _RegistrationState extends State<Registration> {
                                   labelText: 'Enter Your Name',
                                   icon: Icon(
                                     Icons.person,
-                                    color: Colors.green,
+                                    color: greencolor,
                                   ),
                                 ),
                                 validator: (val) =>
@@ -117,7 +118,7 @@ class _RegistrationState extends State<Registration> {
                                 decoration: InputDecoration(
                                     labelText: 'Enter Your Email',
                                     icon: Icon(Icons.email,
-                                       color: Colors.green)),
+                                       color: greencolor)),
                                 validator: (val) => !val.contains('@')
                                     ? 'Not a valid email.'
                                     : null,
@@ -129,7 +130,7 @@ class _RegistrationState extends State<Registration> {
                                 decoration: InputDecoration(
                                     labelText: 'Password',
                                     icon: Icon(Icons.lock_outline,
-                                        color: Colors.green),
+                                        color: greencolor),
                                     suffixIcon: new GestureDetector(
                                       onTap: () {
                                         setState(() {
@@ -151,7 +152,7 @@ class _RegistrationState extends State<Registration> {
                                 decoration: InputDecoration(
                                     labelText: ' Confirm Password',
                                     icon: Icon(Icons.lock_outline,
-                                        color: Colors.green),
+                                        color: greencolor),
                                     suffixIcon: new GestureDetector(
                                       onTap: () {
                                         setState(() {
@@ -189,7 +190,7 @@ class _RegistrationState extends State<Registration> {
         
 ),
 
-                                  color: Colors.green,
+                                  color: greencolor,
                                   onPressed: () async
                                    {
                                     validateFromAndLogin();
@@ -208,7 +209,10 @@ class _RegistrationState extends State<Registration> {
                                     bool res = await AuthProvider()
                                         .createUserWithNewEmail(
                                             _emailController.text,
-                                            _passwordController.text);
+                                            _passwordController.text,
+                                            _nameController.text);
+                                           // _nameController.text);
+                                            
                                     if (!res) {
                                       // print(
                                       //     'Already Registerd Your Account!\nPlease Login');
@@ -218,10 +222,7 @@ class _RegistrationState extends State<Registration> {
                                     //               "Already Registerd Your Account!\nPlease Login")));
                                     } else
                                     
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => Login()));
+                                      Navigator.of(context).pushNamed("/login");
                                   },
                                   child: Text(
                                     'Register',
@@ -244,12 +245,9 @@ class _RegistrationState extends State<Registration> {
         
 ),
 
-                                  color: Colors.green,
+                                  color: greencolor,
                                   onPressed: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => Login()));
+                                    Navigator.of(context).pushReplacementNamed("/login");
                                   },
                                   child: Text(' Go To LoginPage',
                                       style: TextStyle(

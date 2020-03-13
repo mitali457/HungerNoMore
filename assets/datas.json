@@ -1,26 +1,28 @@
 [
     {
       "Image": "images/food1.png",
-      "Name": "The Hawkers",
-      "Items": ["Burgers","Chinese","Fast Food","Italian","Juice"],
+      "Name": "IceCream",
+      
       "minOrder": 20
     },
     {
       "Image": "images/food2.png",
-      "Name": "Flipping Noodles",
-      "Items": ["Burgers","Chinese","Fast Food","Italian","Juice"],
+      "Name": "Burgers",
+      
       "minOrder": 50
     },
     {
       "Image": "images/food3.png",
-      "Name": "Pizza Hut",
-      "Items": ["Pizza","Chinese","Fast Food","Italian","Juice"],
+      "Name": "Pizza ",
+      
       "minOrder": 20
     },
+    
     {
-      "Image": "images/food4.png",
-      "Name": "Blue Hill",
-      "Items": ["Burgers","Chinese","Fast Food","Italian","Juice"],
+      "Image": "images/f3.png",
+      "Name": "Chinese",
+      
       "minOrder": 40
     }
+    
   ]

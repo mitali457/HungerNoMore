@@ -1,182 +1,79 @@
-// import 'package:flutter/material.dart';
-
-// class MenuItem extends StatefulWidget{
-//   @override
-//   State<StatefulWidget> createState() {
-    
-//     return _MenuItemState();
-//   }
-  
-// }
-// class _MenuItemState extends State<MenuItem> {
-//   @override
-//   Widget build(BuildContext context) {
-    
-//     return  Scaffold(
-//         appBar: AppBar(
-//           title: Text('Menu Items'),
-//         ),
-//         body:SafeArea(
-//           child: ListView(children: <Widget>[
-//            Padding(
-//               padding: const EdgeInsets.only(left:15.0, right: 15.0, top: 15.0),
-//               child: Container(
-//                 height: 40.0,
-//                 child: ListView(
-//                   scrollDirection: Axis.horizontal,
-//                   children: <Widget>[
-//                     Container(
-//                       decoration: BoxDecoration(
-//                         color: Colors.green,
-//                         borderRadius: BorderRadius.all(Radius.circular(10.0)),
-//                       ),
-//                       child: Padding(
-//                         padding: const EdgeInsets.only(left:20.0, right: 20.0, top: 5.0, bottom: 5.0),
-//                         child: Center(
-//                           child: FlatButton(
-//                           child: Text("Breakfast", style: TextStyle(color: Colors.white, fontSize: 16.0, letterSpacing: 0.5),),
-                        
-//                         onPressed: () {
-                      
-//                     }
-//                     )),
-//                       ),
-//                     ),
-//                     SizedBox(width: 10.0,),
-//                     Container(
-//                       decoration: BoxDecoration(
-//                         color: Colors.white,
-//                         borderRadius: BorderRadius.all(Radius.circular(10.0)),
-//                         border: new Border.all(color: Colors.green),
-//                       ),
-//                       child: Padding(
-//                         padding: const EdgeInsets.only(left:20.0, right: 20.0, top: 5.0, bottom: 5.0),
-//                         child: Center(
-//                           child: Text("Lunch", style: TextStyle(
-//                             color: Colors.green,
-//                             fontSize: 16.0,
-//                             letterSpacing: 0.5
-//                           ),),
-//                         ),
-//                       ),
-//                     ),
-//                     SizedBox(width: 10.0,),
-//                     Container(
-//                       decoration: BoxDecoration(
-//                         color: Colors.white,
-//                         borderRadius: BorderRadius.all(Radius.circular(10.0)),
-//                         border: new Border.all(color: Colors.green),
-//                       ),
-//                       child: Padding(
-//                         padding: const EdgeInsets.only(left:20.0, right: 20.0, top: 5.0, bottom: 5.0),
-//                         child: Center(
-//                           child: Text("Snacks", style: TextStyle(
-//                               color: Colors.green,
-//                               fontSize: 16.0,
-//                               letterSpacing: 0.5
-//                           ),),
-//                         ),
-//                       ),
-//                     ),
-//                     SizedBox(width: 10.0,),
-//                     Container(
-//                       decoration: BoxDecoration(
-//                         color: Colors.white,
-//                         borderRadius: BorderRadius.all(Radius.circular(10.0)),
-//                         border: new Border.all(color: Colors.green),
-//                       ),
-//                       child: Padding(
-//                         padding: const EdgeInsets.only(left:20.0, right: 20.0, top: 5.0, bottom: 5.0),
-//                         child: Center(
-//                           child: Text("Brunch", style: TextStyle(
-//                               color: Colors.green,
-//                               fontSize: 16.0,
-//                               letterSpacing: 0.5
-//                           ),),
-//                         ),
-//                       ),
-//                     ),
-//                     SizedBox(width: 10.0,),
-//                     Container(
-//                       decoration: BoxDecoration(
-//                         color: Colors.white,
-//                         borderRadius: BorderRadius.all(Radius.circular(10.0)),
-//                         border: new Border.all(color: Colors.green),
-//                       ),
-//                       child: Padding(
-//                         padding: const EdgeInsets.only(left:20.0, right: 20.0, top: 5.0, bottom: 5.0),
-//                         child: Center(
-//                           child: Text("Dinner", style: TextStyle(
-//                               color: Colors.green,
-//                               fontSize: 16.0,
-//                               letterSpacing: 0.5
-//                           ),),
-//                         ),
-//                       ),
-
-//         ),
-//                   ]
-//         ),
-//               )
-//            )
-//           ]
-//         ),
-//         ),
-//       );
-  
-//   }
-  
-// }
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
-
+import 'package:newapp/Utils/colors.dart';
 
 class MenuItem extends StatefulWidget {
-  MenuItem({Key key}) : super(key: key);
-
-  @override
-  MenuItemState createState() =>MenuItemState();
+  MenuItemstate createState() => MenuItemstate();
 }
 
-class MenuItemState extends State<MenuItem> {
+class MenuItemstate extends State<MenuItem> {
+  final String url = "https://api.myjson.com/bins/1en5ry";
+  List<dynamic> food;
+  @override
+  void initState() {
+    this.getData();
+  }
+
+  Future<String> getData() async {
+    var response = await http
+        .get(Uri.encodeFull(url), headers: {"ACCEPT": "application/json"});
+    setState(() {
+      var convertDataToJson = json.decode(response.body);
+      food = convertDataToJson['foods'];
+    });
+    return "success";
+  }
+ 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: new Container(
-      child: new Center(
-        child: new FutureBuilder(
-            future :
-                DefaultAssetBundle.of(context).loadString('assets/data.json'),
-            builder: (context, snapshot) {
-              var datas = json.decode(snapshot.data.toString());
-
-              return new ListView.builder(
-                itemBuilder: (BuildContext context, int index) {
-                   var data = datas[index];
-                  return new Card(
-                    child: new Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: <Widget>[
-                        new Text("Name: " + data['Name'],
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 24)),
-                        new Text("Item: " + data['Items'],
-                            style: TextStyle(
-                                fontWeight: FontWeight.normal, fontSize: 20)),
-                        new Text("Minorder: " + data['minOrder'],
-                            style: TextStyle(
-                                fontWeight: FontWeight.normal, fontSize: 20)),
-                        new Image.network(data['image'], height: 200)
-                      ],
-                    ),
-                  );
+        appBar: AppBar(
+        title: Text('MenuItems!!'),),
+        
+        body: GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+          ),
+          itemCount: food.length,
+          itemBuilder: (context, index) {
+            return InkWell(
+                onTap: () {
+                 Navigator.of(context).pushNamed("/cart");
                 },
-                itemCount: datas== null ? 0 : datas.length,
-              );
-            }),
-      ),
-    ));
+                child: Container(
+                  margin: EdgeInsets.all(5),
+                  width: 100,
+                  height: 100,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(color: greencolor, blurRadius: 4)
+                      ]),
+                  child: Column(children: <Widget>[
+                    Container(
+                        margin: EdgeInsets.only(bottom: 10),
+                        width: 200,
+                        height: 160,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: NetworkImage(
+                                  food[index]['foodimage'],
+                                ),
+                                fit: BoxFit.cover))),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[Text(food[index]['foodname'],style: TextStyle( color:Colors.blueGrey,
+                                fontWeight: FontWeight.bold, fontSize: 18))],
+                    )
+                  ]),
+                ));
+          },
+        ));
   }
 }
+

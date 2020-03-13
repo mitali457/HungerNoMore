@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:newapp/Utils/colors.dart';
 
 
 class RestaurantName extends StatefulWidget {
@@ -29,7 +30,7 @@ class _RestaurantNameState extends State< RestaurantName > {
                       bottomRight: Radius.circular(30.0),
                     )
                   ),
-                  child: Image.asset("images/food1.png", fit: BoxFit.fitWidth,),
+                  child: Image.asset("images/f1.png", fit: BoxFit.fitWidth,),
                 ),
 
                 Padding(
@@ -100,7 +101,7 @@ class _RestaurantNameState extends State< RestaurantName > {
                   children: <Widget>[
                     Container(
                       decoration: BoxDecoration(
-                        color: Colors.green,
+                        color:  greencolor,
                         borderRadius: BorderRadius.all(Radius.circular(10.0)),
                       ),
                       child: Padding(
@@ -123,13 +124,13 @@ class _RestaurantNameState extends State< RestaurantName > {
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                        border: new Border.all(color: Colors.green),
+                        border: new Border.all(color:  greencolor),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.only(left:20.0, right: 20.0, top: 5.0, bottom: 5.0),
                         child: Center(
                           child: Text("Lunch", style: TextStyle(
-                            color: Colors.green,
+                            color:  greencolor,
                             fontSize: 16.0,
                             letterSpacing: 0.5
                           ),),
@@ -141,13 +142,13 @@ class _RestaurantNameState extends State< RestaurantName > {
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                        border: new Border.all(color: Colors.green),
+                        border: new Border.all(color:  greencolor),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.only(left:20.0, right: 20.0, top: 5.0, bottom: 5.0),
                         child: Center(
                           child: Text("Snacks", style: TextStyle(
-                              color: Colors.green,
+                              color:  greencolor,
                               fontSize: 16.0,
                               letterSpacing: 0.5
                           ),),
@@ -159,13 +160,13 @@ class _RestaurantNameState extends State< RestaurantName > {
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                        border: new Border.all(color: Colors.green),
+                        border: new Border.all(color:  greencolor),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.only(left:20.0, right: 20.0, top: 5.0, bottom: 5.0),
                         child: Center(
                           child: Text("Brunch", style: TextStyle(
-                              color: Colors.green,
+                              color:  greencolor,
                               fontSize: 16.0,
                               letterSpacing: 0.5
                           ),),
@@ -177,13 +178,13 @@ class _RestaurantNameState extends State< RestaurantName > {
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                        border: new Border.all(color: Colors.green),
+                        border: new Border.all(color:  greencolor),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.only(left:20.0, right: 20.0, top: 5.0, bottom: 5.0),
                         child: Center(
                           child: Text("Dinner", style: TextStyle(
-                              color: Colors.green,
+                              color:  greencolor,
                               fontSize: 16.0,
                               letterSpacing: 0.5
                           ),),
@@ -252,11 +253,11 @@ class _RestaurantNameState extends State< RestaurantName > {
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                                    border: new Border.all(color: Colors.green),
+                                    border: new Border.all(color:  greencolor),
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: Icon(Icons.add, color: Colors.green, size: 20.0,),
+                                    child: Icon(Icons.add, color:  greencolor, size: 20.0,),
                                   ),
                                 )
                               ],
@@ -338,11 +339,11 @@ class _RestaurantNameState extends State< RestaurantName > {
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                                    border: new Border.all(color: Colors.green),
+                                    border: new Border.all(color:  greencolor),
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: Icon(Icons.add, color: Colors.green, size: 20.0,),
+                                    child: Icon(Icons.add, color:  greencolor, size: 20.0,),
                                   ),
                                 )
                               ],

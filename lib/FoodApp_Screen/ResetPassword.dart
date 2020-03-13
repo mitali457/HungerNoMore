@@ -1,5 +1,10 @@
+
+
 import 'package:flutter/material.dart';
-import 'package:newapp/FoodApp_Screen/Login.dart';
+import 'package:newapp/Utils/String.dart';
+
+import 'package:newapp/Utils/colors.dart';
+import 'package:newapp/Utils/images.dart';
 
 
 import 'package:newapp/services/firebase_auth.dart';
@@ -34,7 +39,7 @@ class _ResetPasswordPageState extends State<ResetPassword> {
                       
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
-                        color:Colors.green,
+                        color:greencolor,
                         )),
             content: const Text(
                 ' Check Your Email\n Follow The link for your reset \npassword..',
@@ -51,7 +56,7 @@ class _ResetPasswordPageState extends State<ResetPassword> {
                       
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
-                        color:Colors.green,
+                        color:greencolor,
                         )),
                 onPressed: () {
                   Navigator.of(context).pop();
@@ -73,23 +78,29 @@ class _ResetPasswordPageState extends State<ResetPassword> {
             flexibleSpace: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                Text('Forgot Password',
+                Padding(padding: EdgeInsets.only(left:20),
+                child:Text('Forgot Password',
             textAlign: TextAlign.center,
             textDirection: TextDirection.rtl,
             style: TextStyle(
                       
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
-                        color:Colors.green,
+                        color:greencolor,
                         )),
-                Image.network(
-                  'https://st.depositphotos.com/2010047/4730/i/950/depositphotos_47306889-stock-photo-3d-small-people-with-a.jpg',
-                  fit: BoxFit.contain,
-                  width: 200,
-                  height: 320,
                 ),
                 
-                
+           Container(
+             margin: EdgeInsets.only(top:60,left: 10,right: 10),
+             width:150,
+             height:200,
+             decoration:BoxDecoration(
+               image: DecorationImage(image: resetpasswordimage,
+               fit:BoxFit.cover
+               ),
+             borderRadius: BorderRadius.circular(40)
+             )
+           )
                  
               ],
             ),
@@ -115,13 +126,13 @@ class _ResetPasswordPageState extends State<ResetPassword> {
                    
                       color: Colors.white,
                     ),
-                     Text('To Recover Your Password,You need to enter your registered email address..',
+                     Text(resetpasswordtext,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       
                         fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color:Colors.black,
+                        fontWeight: FontWeight.w400,
+                        color:Colors.blueGrey,
                         )
               
 
@@ -138,7 +149,7 @@ class _ResetPasswordPageState extends State<ResetPassword> {
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: [BoxShadow(
                             color: Color.fromRGBO(25, 250, 37, .3),
-                            blurRadius: 20,
+                            blurRadius: 10,
                             offset: Offset(0, 10)
                           )]
                         ),
@@ -161,7 +172,7 @@ class _ResetPasswordPageState extends State<ResetPassword> {
                     border: InputBorder.none,
                 
                     labelText: 'Enter your Registered Email',
-                    icon: Icon(Icons.email, color: Colors.green),
+                    icon: Padding(padding: EdgeInsets.only(left:10),child:Icon(Icons.email, color: greencolor),)
                   ),
                   validator: (val) =>
                       !val.contains('@') ? 'Not a valid email.' : null,
@@ -189,7 +200,7 @@ class _ResetPasswordPageState extends State<ResetPassword> {
         
 ),
 
-                    color: Colors.green,
+                    color: greencolor,
                     onPressed: () async {
                       message();
                       AuthProvider()
@@ -219,14 +230,13 @@ class _ResetPasswordPageState extends State<ResetPassword> {
                     child: FlatButton(
                       color: Colors.white,
                       onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Login()));
+                        Navigator.of(context).pushNamed("/login");
                       },
                       child: Text(' Return To LoginPage!!',
                           style: TextStyle(
-                              color: Colors.black,
+                              color: Colors.blueGrey,
                               //fontSize: 10,
-                              fontWeight: FontWeight.bold)),
+                              fontWeight: FontWeight.w400)),
                     ),
                   ),
                 )

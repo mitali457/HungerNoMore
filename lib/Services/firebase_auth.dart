@@ -1,8 +1,9 @@
-import 'dart:io';
+
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart'; 
+ 
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:newapp/Services/Userdatabase.dart';
 
 class AuthProvider{
 final GoogleSignIn _googleSignIn = GoogleSignIn();
@@ -30,17 +31,20 @@ return false;
 }
 
 }
-Future<bool>createUserWithNewEmail(String email,String password)async
+Future<bool>createUserWithNewEmail(String email,String password,String name)async
 {
   try {
 print(_auth);
 
  AuthResult result = await _auth.createUserWithEmailAndPassword(
+   
       email:email,
       password: password,
+      //name:name
     );
         FirebaseUser user= result.user;
  print(user);
+ await DatabaseServise(uid: user.uid).updateUserdata( email, password);
 
   
   if(user != null)

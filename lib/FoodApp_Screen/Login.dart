@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:newapp/FoodApp_Screen/Homescreen.dart';
-import 'package:newapp/FoodApp_Screen/Registration.dart';
+
 import 'package:newapp/FoodApp_Screen/ResetPassword.dart';
+import 'package:newapp/Utils/colors.dart';
+import 'package:newapp/Utils/images.dart';
 
 import 'package:newapp/services/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -50,8 +51,8 @@ class _LoginPageState extends State<Login> {
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
             gradient: LinearGradient(begin: Alignment.topCenter, colors: [
-          Colors.green[900],
-          Colors.green[800],
+          greencolor,
+          greencolor,
           Colors.white
         ])),
         child: ListView(children: <Widget>[
@@ -100,20 +101,23 @@ class _LoginPageState extends State<Login> {
                             blurRadius: 20,
                           )
                         ]),
-                    child: Form(
+                    child: Padding(padding: EdgeInsets.only(right: 10,left:10,
+                    
+                    ),
+                    child:Form(
                       key: formKey,
                       child: Column(children: <Widget>[
                         Container(
                           padding: EdgeInsets.all(5),
                           decoration: BoxDecoration(
                               border: Border(
-                                  bottom: BorderSide(color: Colors.black))),
+                                  bottom: BorderSide(color: Colors.blueGrey))),
                           child: TextFormField(
                             controller: _emailController,
                             decoration: InputDecoration(
                               border: InputBorder.none,
                               labelText: 'Email',
-                              icon: Icon(Icons.email, color: Colors.green),
+                              icon: Icon(Icons.email, color: greencolor),
                             ),
                             validator: (val) => !val.contains('@')
                                 ? 'Not a valid email.'
@@ -133,7 +137,7 @@ class _LoginPageState extends State<Login> {
                                 border: InputBorder.none,
                                 labelText: 'Password',
                                 icon: Icon(Icons.lock_outline,
-                                    color: Colors.green),
+                                    color: greencolor),
                                 suffixIcon: new GestureDetector(
                                   onTap: () {
                                     setState(() {
@@ -151,6 +155,7 @@ class _LoginPageState extends State<Login> {
                         ),
                       ]),
                     ),
+                    )
                   ),
                   SizedBox(
                     height: 12,
@@ -171,6 +176,7 @@ class _LoginPageState extends State<Login> {
                           "Forgot Password??",
                           textDirection: TextDirection.ltr,
                           style: TextStyle(
+                              color: Colors.blueGrey,
                               fontSize: 17.0, fontWeight: FontWeight.bold),
                         ),
                       ),
@@ -179,7 +185,7 @@ class _LoginPageState extends State<Login> {
                   new CheckboxListTile(
                     value: checkValue,
                     onChanged: _onChanged,
-                    title: new Text("Remember me"),
+                    title: new Text("Remember me",style: TextStyle(color:Colors.blueGrey),),
                     controlAffinity: ListTileControlAffinity.leading,
                   ),
                   Container(
@@ -190,7 +196,7 @@ class _LoginPageState extends State<Login> {
                           shape: RoundedRectangleBorder(
                             borderRadius: new BorderRadius.circular(40.0),
                           ),
-                          color: Colors.green,
+                          color: greencolor,
                           onPressed: () async {
                             validateFromAndLogin();
                             if (_emailController.text.isEmpty ||
@@ -209,10 +215,7 @@ class _LoginPageState extends State<Login> {
                                   content: new Text(
                                       "No user Found! Please Register your New Account")));
                             } else
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Homescreen()));
+                              Navigator.of(context).pushNamed("/homescreen");
                           },
                           child: new Text('Login',
                               style: TextStyle(
@@ -226,7 +229,7 @@ class _LoginPageState extends State<Login> {
                     child: Text(
                       '- OR -',
                       style: TextStyle(
-                        color: Colors.black,
+                        color: Colors.blueGrey,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -243,18 +246,17 @@ class _LoginPageState extends State<Login> {
                               //textDirection: TextDirection.rtl,
                               style: TextStyle(
                                   fontSize: 20,
-                                  color: Colors.black,
+                                  color: Colors.blueGrey,
                                   fontWeight: FontWeight.bold)),
                         ),
                         Container(
                           padding: EdgeInsets.only(top: 7, left: 1, right: 27),
                           height: 40,
-                          width: 80,
+                          width: 60,
                           decoration: BoxDecoration(),
                           child: FlatButton(
                             color: Colors.white,
-                            child: Image.network(
-                                'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/588px-Google_%22G%22_Logo.svg.png'),
+                            child: googlelogoinloginscreen,
                             onPressed: () async {
                               bool res = await AuthProvider().loginWithGoogle();
                               if (!res) print("error logging in with ");
@@ -272,25 +274,22 @@ class _LoginPageState extends State<Login> {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 18,
-                                  color: Colors.black,
+                                  color: Colors.blueGrey,
                                   fontWeight: FontWeight.w600)),
                         ),
                         Container(
-                          width: 120,
-                          height: 49,
+                          width: 100,
+                          height: 39,
                           decoration: BoxDecoration(),
                           child: FlatButton(
                             color: Colors.white,
                             onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Registration()));
+                              Navigator.of(context).pushNamed("/register");
                             },
                             child: Text('Sign Up',
                                 style: TextStyle(
-                                    color: Colors.green,
-                                    fontSize: 18,
+                                    color: greencolor,
+                                    fontSize: 16,
                                     fontWeight: FontWeight.bold)),
                           ),
                         ),
