@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 NetworkImage resetpasswordimage =NetworkImage('https://st.depositphotos.com/2010047/4730/i/950/depositphotos_47306889-stock-photo-3d-small-people-with-a.jpg');
-NetworkImage splashimage = NetworkImage('https://media.giphy.com/media/daLw3QnTCkDjG/giphy.gif');
+NetworkImage helpimage=NetworkImage('https://www.virtuenetz.com/wp-content/uploads/2016/02/Call-centre-services.png');
+NetworkImage splashimage = NetworkImage('https://imagesvc.meredithcorp.io/v3/mm/gif?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F35%2F2019%2F04%2F03211145%2F800-eating-after-workout.gif&q=85');
 Image cartimage=Image.network('https://farm9.staticflickr.com/8586/16023214373_90552b64f6_o.jpg');
 Image foodimage1inhomescreen =Image.network('https://images.jdmagicbox.com/comp/kolkata/48/033pf002148/catalogue/sholo-ana-bangali-jodhpur-park-kolkata-home-delivery-restaurants-1ej97et.png?clr=#521414');
 Image foodimage2inhomescreen=Image.network('https://pngriver.com/wp-content/uploads/2018/04/Download-Indian-Food-PNG-Image.png');

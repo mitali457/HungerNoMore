@@ -1,45 +1,77 @@
 import 'package:flutter/material.dart';
-import 'package:newapp/FoodApp_Screen/Cart.dart';
-import 'package:newapp/FoodApp_Screen/Category.dart';
-import 'package:newapp/FoodApp_Screen/Menu.dart';
+
+import 'package:newapp/Screen/Category.dart';
+import 'package:newapp/Screen/Home.dart';
+import 'package:newapp/Screen/Menu.dart';
 import 'package:newapp/Utils/colors.dart';
-class CustomBottomNavigationBar extends StatelessWidget {
+
+
+
+class CustomBottomNavigationBar extends StatefulWidget {
+  State<StatefulWidget> createState() {
+    return CustomBottomNavigationBarState();
+  }  
+}
+
+class CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
+  int _selectedPage = 0;
+  List<Widget> tabs = [Homescreen(),Category(), MenuItem()];
+
   @override
   Widget build(BuildContext context) {
-   
-    return BottomNavigationBar(
-        backgroundColor: greencolor,
-        items: [
-          BottomNavigationBarItem(
-            icon: IconButton(icon:Icon(Icons.category,color: Colors.white,),
-            onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>Category()));
-            }),
 
-            title:  Text('Category',style: TextStyle(color: Colors.white)),
+    return SafeArea 
+    (child: 
+     Scaffold(
+      
+          body:tabs[_selectedPage],
+          bottomNavigationBar: BottomNavigationBar(
+      
+        //backgroundColor: Colors.green,
+        currentIndex: _selectedPage,
+        onTap: (int index) {
+          setState(() {
+            _selectedPage = index;  
+          });
+        },
+        items: [ 
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home,
+              color: greencolor,
+            ),
+            
+            title: Text('Home', style: TextStyle(color: greencolor)),
+          ),
+
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.category,
+              color: greencolor,
+            ),
+            // onPressed: (){
+            //   Navigator.push(context, MaterialPageRoute(builder: (context)=>Category()));
+            // }),
+
+            title: Text('Category', style: TextStyle(color: greencolor)),
           ),
           BottomNavigationBarItem(
-            
-            
-
-            icon: IconButton(icon: Icon(Icons.restaurant_menu,color: Colors.white), onPressed: (){
-               Navigator.push(context, MaterialPageRoute(builder: (context)=>MenuItem()));
-            }),
-            title: Text('Menu',style: TextStyle(color: Colors.white),),
-           
-           
-
-            
+            icon: Icon(Icons.restaurant_menu, color: greencolor),
+            //  onPressed: (){
+            //    Navigator.push(context, MaterialPageRoute(builder: (context)=>MenuItem()));
+            // }),
+            title: Text(
+              'Menu',
+              style: TextStyle(color: greencolor),
+            ),
           ),
-          
-          BottomNavigationBarItem(
-              icon:  IconButton(icon:Icon(Icons.shopping_cart,color: Colors.white),
-              onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>Cart()));
-              }
-              ),
-               title: Text('Cart',style: TextStyle(color: Colors.white)))
+         
+    
+    
         ],
-    );
+        ),
+        ),
+    
+        );
   }
 }
