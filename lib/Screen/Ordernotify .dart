@@ -1,7 +1,6 @@
  
 import 'package:flutter/material.dart';
-import 'package:newapp/Screen/Trackorders.dart';
-import 'package:newapp/Utils/colors.dart';
+import 'package:newapp/Googlemapview/googlemapview.dart';
 
 class Ordernotify extends StatefulWidget {
   static String tag = 'Ordernotify';
@@ -63,7 +62,7 @@ class _OrdernotifyState extends State<Ordernotify> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => Trackorder()),
+                          MaterialPageRoute(builder: (context) => GoogleMapView()),
                         );
                       },
                       child: Container(

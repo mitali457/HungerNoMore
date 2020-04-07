@@ -16,7 +16,7 @@ class MenuItem extends StatefulWidget {
 
 class MenuItemstate extends State<MenuItem> {
   bool loader = true;
-  final String url = "https://api.myjson.com/bins/zppy0";
+  //final String url = "https://api.myjson.com/bins/zppy0";
   MenuItemList food;
   @override
   void initState() {

@@ -49,7 +49,7 @@ class _UserAccountState extends State<UserAccount> {
     }
 
     return downloadurl;
-    ;
+    
   }
 
   void saveToDatabase(downloadurl) {

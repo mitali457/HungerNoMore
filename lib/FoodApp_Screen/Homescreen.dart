@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:newapp/FoodApp_Screen/Menu.dart';
+
 import 'package:newapp/FoodApp_Screen/Restaurant_name.dart';
 
 
@@ -18,7 +18,7 @@ class Homescreen extends StatefulWidget {
 
 
 class _HomescreenState extends State<Homescreen> {
-  final TextEditingController _nameFilter = new TextEditingController();
+ // final TextEditingController _nameFilter = new TextEditingController();
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 //   CategoriesList categoriesList;
  // RestaurantList resto;

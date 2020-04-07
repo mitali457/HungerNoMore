@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:newapp/Googlemapview/googlemapview.dart';
 import 'package:newapp/Screen/Cart.dart';
 import 'package:newapp/Screen/Cartdetails.dart';
 import 'package:newapp/Screen/Category.dart';
@@ -28,7 +29,7 @@ class Routes {
     '/homescreen': (BuildContext context) => CustomBottomNavigationBar(),
     '/category': (BuildContext context) => Category(),
     '/menu': (BuildContext context) => MenuItem(),
-    '/cart':(BuildContext context)=>Cart() ,
+    '/cart':(BuildContext context)=>Cart(foodItem: null,) ,
     '/cartdetails':(BuildContext context)=>CartDetails(),
     '/payment':(BuildContext context)=>Payment(),
     '/trackorders':(BuildContext context)=> Trackorder(),
@@ -36,6 +37,7 @@ class Routes {
     '/users':(BuildContext context)=> UserAccount(),
     '/settings':(BuildContext context)=> Settingtheme(),
     '/helpcenter':(BuildContext context)=>HelpCenter(),
+    '/gmap':(BuildContext context)=> GoogleMapView(),
 
 
     

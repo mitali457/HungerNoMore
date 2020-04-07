@@ -24,8 +24,10 @@ class DatabaseServise {
 
   Future updateUsergetdata() async {
     print(uid);
-    DataSnapshot userData= await databaseReference.once().then((DataSnapshot snapshot){
+    DataSnapshot userData = await databaseReference.once().then((DataSnapshot snapshot){
       print('Data : ${snapshot.value}');
+      return;
+      
     });
     }
 
