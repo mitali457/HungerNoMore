@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+
 import 'package:newapp/Model/menuitems.dart';
 
 
@@ -90,13 +89,13 @@ class Menudetails extends ChangeNotifier {
   
 
 
-Future<MenuItemList> getMenuItemData() async {
-  final String url = "https://api.myjson.com/bins/zppy0";
+// Future<MenuItemList> getMenuItemData() async {
+//   final String url = "https://api.myjson.com/bins/zppy0";
 
-  var response = await http
-      .get(Uri.encodeFull(url), headers: {"ACCEPT": "application/json"});
-  MenuItemList convertDataToJson =
-      MenuItemList.fromJson(json.decode(response.body));
+//   var response = await http
+//       .get(Uri.encodeFull(url), headers: {"ACCEPT": "application/json"});
+//   MenuItemList convertDataToJson =
+//       MenuItemList.fromJson(json.decode(response.body));
 
-  return convertDataToJson;
-}
+//   return convertDataToJson;
+// }

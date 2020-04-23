@@ -17,7 +17,7 @@ class MenuItem extends StatefulWidget {
 class MenuItemstate extends State<MenuItem> {
   bool loader = true;
   //final String url = "https://api.myjson.com/bins/zppy0";
-  MenuItemList food;
+  //MenuItemList food;
   @override
   void initState() {
     this.getData();
@@ -26,7 +26,7 @@ class MenuItemstate extends State<MenuItem> {
 
   Future<String> getData() async {
     
-    food = await getMenuItemData();
+    //food = await getMenuItemData();
 
     setState(() {
       loader = false;
@@ -48,8 +48,6 @@ class MenuItemstate extends State<MenuItem> {
   Widget build(BuildContext context) {
     var cartitem = Provider.of<Menudetails>(context);
     int totalCount = cartitem.selectedFooditem.length;
-    
-
     return Scaffold(
       //body: Center(child: CircularProgressIndicator()),
       backgroundColor: Colors.white,
@@ -106,15 +104,19 @@ class MenuItemstate extends State<MenuItem> {
           : GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2, childAspectRatio: 0.8),
-              itemCount: food.foods.length,
-              itemBuilder: (context, index) {
+                  itemCount:fooditem.length,
+                  itemBuilder:(context, index)
+
+              // itemCount: food.foods.length,
+              // itemBuilder: (context, index) 
+              {
                 return InkWell(
                     onTap: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) =>
-                                Cart(foodItem: food.foods[index]),
+                                Cart(fooditem: fooditem[index].toString()),
                           ));
                     },
                     child: Container(
@@ -136,7 +138,8 @@ class MenuItemstate extends State<MenuItem> {
                                 decoration: BoxDecoration(
                                     image: DecorationImage(
                                         image: NetworkImage(
-                                          food.foods[index].foodimage,
+                                          fooditem[index].foodimage
+                                          //food.foods[index].foodimage,
                                         ),
                                         fit: BoxFit.cover))),
                             Padding(
@@ -145,13 +148,15 @@ class MenuItemstate extends State<MenuItem> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
-                                  Text(food.foods[index].foodname,
+                                  Text(
+                                    fooditem[index].foodname,
+                                    //food.foods[index].foodname,
                                       style: TextStyle(
                                           color: Colors.blueGrey,
                                           fontWeight: FontWeight.bold,
                                           fontSize: 16)),
                                          
-                                  Text("₹ ${food.foods[index].foodprice}",
+                                  Text("₹ ${fooditem[index].foodprice}",
                                       style: TextStyle(
                                           color: Colors.blueGrey,
                                           fontWeight: FontWeight.bold,
@@ -167,7 +172,7 @@ class MenuItemstate extends State<MenuItem> {
                                 child: RaisedButton(
                                     onPressed: () {
 
-                      cartitem.addToCart(food.foods[index]);
+                      cartitem.addToCart(fooditem[index]);
 
 
                                     },

@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:newapp/Screen/ResetPassword.dart';
 import 'package:newapp/Provider/login_provider.dart';
+import 'package:newapp/Services/firebase_auth.dart';
 import 'package:newapp/Utils/colors.dart';
 import 'package:newapp/Utils/images.dart';
 
-import 'package:newapp/services/firebase_auth.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
@@ -247,7 +248,7 @@ class _LoginPageState extends State<Login> {
                             color: Colors.white,
                             child: googlelogoinloginscreen,
                             onPressed: () async {
-                              bool res = await AuthProvider().loginWithGoogle();
+                              bool res = (await AuthenticationService().loginWithGoogle(context)) as bool;
                               if (!res) print("error logging in with ");
                             },
                           ),

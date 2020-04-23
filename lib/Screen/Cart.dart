@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+
 import 'package:newapp/Provider/menuItemsdetails_provider.dart';
 import 'package:newapp/Utils/colors.dart';
 import 'package:provider/provider.dart';
 class Cart extends StatefulWidget {
-  final foodItem;
+  final fooditem;
   
-  Cart({Key key, @required this.foodItem}) : super(key: key);
+  Cart({Key key, @required this.fooditem, foodItem}) : super(key: key);
 
   @override
   _CartState createState() => _CartState();
@@ -82,12 +83,12 @@ class _CartState extends State<Cart> {
         padding: EdgeInsets.symmetric(horizontal: 10.0),
         scrollDirection: Axis.vertical,
         children: <Widget>[
-          Image.network(widget.foodItem.foodimage),
-          Text(widget.foodItem.foodname,
+          Image.network(widget.fooditem.foodimage),
+          Text(widget.fooditem.foodname,
           textAlign: TextAlign.center,
           style: TextStyle(color: greencolor,fontSize: 28,fontWeight: FontWeight.bold),
           ),
-          Text(widget.foodItem.foodprice,
+          Text(widget.fooditem.foodprice,
           textAlign: TextAlign.center,
           style: TextStyle(color: greencolor,fontSize: 28,fontWeight: FontWeight.bold),
           )

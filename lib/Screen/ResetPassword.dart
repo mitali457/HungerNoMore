@@ -1,13 +1,14 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:newapp/Services/firebase_auth.dart';
 import 'package:newapp/Utils/String.dart';
 
 import 'package:newapp/Utils/colors.dart';
 import 'package:newapp/Utils/images.dart';
 
 
-import 'package:newapp/services/firebase_auth.dart';
+
 
 class ResetPassword extends StatefulWidget {
   @override
@@ -203,7 +204,7 @@ class _ResetPasswordPageState extends State<ResetPassword> {
                     color: greencolor,
                     onPressed: () async {
                       message();
-                      AuthProvider()
+                      AuthenticationService()
                           .sendPasswordResetEmail(_emailController.text);
                     },
                     child: Text(

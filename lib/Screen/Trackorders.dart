@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:newapp/Googlemapview/googlemapview.dart';
 import 'package:newapp/Utils/colors.dart';
 import 'package:newapp/Widget/timeline.dart';
 
@@ -35,6 +36,10 @@ class _TrackorderState extends State<Trackorder> {
                 size: 30.0,
               ),
               onPressed: () {
+                //  Navigator.push(
+                //           context,
+                //           MaterialPageRoute(builder: (context) => GoogleMapView()),
+                //         );
                 Navigator.of(context).pushNamedAndRemoveUntil(
                     '/homescreen', (Route<dynamic> route) => false);
               },
@@ -53,104 +58,29 @@ class _TrackorderState extends State<Trackorder> {
             //color: Colors.white,
             child: Stack(
               children: <Widget>[
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.only(left: 20.0, top: 20.0),
-                          child: Text('Mon,25 Nov',
-                              style: TextStyle(
-                                  color: greencolor,
-                                  fontSize: 14.0,
-                                  fontWeight: FontWeight.w400)),
-                        )
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.only(left: 20.0, top: 10.0),
-                          child: Text('Order ID: 25GaAr',
-                              style: TextStyle(
-                                  color: Colors.blueGrey,
-                                  fontSize: 14.0,
-                                  fontWeight: FontWeight.w400)),
-                        )
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.only(
-                            right: 20.0,
-                          ),
-                          child: Text('Amt.150.00',
-                              style: TextStyle(
-                                  color: greencolor,
-                                  fontSize: 14.0,
-                                  fontWeight: FontWeight.w500)),
-                        )
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.only(left: 20.0, top: 10.0),
-                          child: Text('ETA: 20 min',
-                              style: TextStyle(
-                                  color: greencolor,
-                                  fontSize: 16.0,
-                                  fontWeight: FontWeight.w500)),
-                        )
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.only(left: 20.0, top: 10.0),
-                          child: Text('Product quantity: Paratha 2 pices',
-                              style: TextStyle(
-                                  color: greencolor,
-                                  fontSize: 16.0,
-                                  fontWeight: FontWeight.w300)),
-                        )
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.only(left: 20.0, top: 10.0),
-                          child: Text('Order rate: Rs.350',
-                              style: TextStyle(
-                                  color: greencolor,
-                                  fontSize: 16.0,
-                                  fontWeight: FontWeight.w500)),
-                        )
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        InkWell(
-                            onTap: () {},
-                            child: Padding(
-                              padding: EdgeInsets.only(left: 20.0, top: 10.0),
-                              child: Text('View Product details',
-                                  style: TextStyle(
-                                      color: greencolor,
-                                      fontSize: 16.0,
-                                      fontWeight: FontWeight.w300)),
-                            ))
-                      ],
-                    ),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.only(left:20,top:50),
+                  child: Column(children: <Widget>[
+                   
+                    Text('Do you want to track the location??',
+                    style: TextStyle(
+                    color: Colors.blueGrey,
+                    fontSize: 23.0,
+                    fontWeight: FontWeight.w600)),
+                     SizedBox(height:20),
+                    Container(
+                       width: 80,
+                      child:FlatButton(
+                      child: Image.network('https://i.ya-webdesign.com/images/vector-pointers-green-map-2.png'),
+                       onPressed: () {
+                   Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => GoogleMapView()),
+                        );
+                  }),
+                      
+                      ),
+                  ],),
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -246,6 +176,7 @@ class _TrackorderState extends State<Trackorder> {
                                   )
                                 ],
                               ),
+                            
                             )
                           ],
                           indicators: <Widget>[
@@ -273,6 +204,7 @@ class _TrackorderState extends State<Trackorder> {
                         )),
                   ],
                 ),
+                
               ],
             ),
           ),

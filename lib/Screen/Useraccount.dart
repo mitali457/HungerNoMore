@@ -13,6 +13,7 @@ class UserAccount extends StatefulWidget {
 }
 
 class _UserAccountState extends State<UserAccount> {
+  TextEditingController _textFieldController = TextEditingController();
   SharedPreferences sharedPreferences;
   String email;
   String name;
@@ -71,6 +72,37 @@ class _UserAccountState extends State<UserAccount> {
       email = sharedPreferences.getString("username");
       name = sharedPreferences.getString("name");
     });
+  }
+   void message() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+           title: Text('Add Your Details'),
+            content: Container(
+              child: TextField(
+                controller: _textFieldController,
+                decoration: InputDecoration(hintText: "Name"),
+              ),
+              
+            ),
+            
+            
+          
+          
+            actions: <Widget>[
+              new FlatButton(
+                child: new Text('CANCEL'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              )
+            ],
+          );
+        }
+          );
+        
+
   }
 
   @override
@@ -180,7 +212,9 @@ class _UserAccountState extends State<UserAccount> {
                  Container(
                    child: FlatButton(
                      color: greencolor,
-                     onPressed: (){},
+                     onPressed: (){
+                       message();
+                     },
                     child: Text('Edit',style: TextStyle(
                                   color: Colors.white, fontSize: 16.0),)),
                  ),
@@ -217,3 +251,7 @@ class _UserAccountState extends State<UserAccount> {
     ));
   }
 }
+
+
+
+

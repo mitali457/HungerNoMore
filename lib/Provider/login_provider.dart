@@ -12,7 +12,7 @@ onPressedLogin(
     print('Email and Password can not Empty');
     return;
   }
-  bool res = await AuthProvider()
+  bool res = await AuthenticationService()
       .signInWithEmail(emailController.text, passwordController.text);
 
   if (!res) {

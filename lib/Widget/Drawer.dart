@@ -6,6 +6,7 @@ import 'package:newapp/Utils/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CustomDrawer extends StatefulWidget {
+  
   @override
   State<StatefulWidget> createState() {
     return _CustomDrawerState();
@@ -13,6 +14,7 @@ class CustomDrawer extends StatefulWidget {
 }
 
 class _CustomDrawerState extends State<CustomDrawer> {
+  
   List<Imagepost> imagepostlist = [];
   SharedPreferences sharedPreferences;
   String email;
@@ -43,7 +45,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
     setState(() {
       email = sharedPreferences.getString("username");
       name = sharedPreferences.getString("name");
-      print("name  $name");
+    print("email $email");
     });
   }
 
@@ -52,7 +54,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
     return Drawer(
       child: ListView(padding: EdgeInsets.zero, children: <Widget>[
         UserAccountsDrawerHeader(
-          accountName: Text('',
+          accountName: Text( 'name',
            style: TextStyle(
                 color: Colors.white,
                 fontSize: 17.0,

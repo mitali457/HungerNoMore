@@ -8,7 +8,7 @@ onPressedRegistration(BuildContext context, email, password, name) async {
     print('Email and Password can not Empty');
     return;
   }
-  bool res = await AuthProvider()
+  bool res = await AuthenticationService()
       .createUserWithNewEmail(email.text, password.text, name.text);
 
   if (!res) {
