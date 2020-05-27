@@ -17,7 +17,9 @@ class Themesetbutton extends StatelessWidget
       onPressed: (){
         themeChange.setTheme(userchoice);
       },
-      child: Row(children: <Widget>[Text(themename)]),
+      child: Row(children: <Widget>[Text(themename,
+      style: TextStyle(color:Colors.blueGrey,fontSize: 18,fontWeight: FontWeight.bold),
+      )]),
     );
   }
 }

@@ -2,6 +2,8 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:newapp/Model/imagepost.dart';
 
+import 'package:newapp/Screen/cartdetails.dart';
+
 import 'package:newapp/Utils/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -54,7 +56,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
     return Drawer(
       child: ListView(padding: EdgeInsets.zero, children: <Widget>[
         UserAccountsDrawerHeader(
-          accountName: Text( 'name',
+          accountName: Text( 'Mitali Mondal',
            style: TextStyle(
                 color: Colors.white,
                 fontSize: 17.0,
@@ -72,17 +74,16 @@ class _CustomDrawerState extends State<CustomDrawer> {
 
           currentAccountPicture: CircleAvatar(
             child: ClipOval(
-              child: new SizedBox(
+              child:  SizedBox(
                   width: 180.0,
                   height: 180.0,
                   child: imagepostlist.length == 0
                       ? Text("")
-                      : ListView.builder(
-                          itemCount: imagepostlist.length,
-                          itemBuilder: (_, index) {
-                            print(imagepostlist[index]);
-                            return imagepostUI(imagepostlist[index].image);
-                          })),
+                      : Container(
+                       height: 50.0,
+                        child: imagepostUI(imagepostlist[0].image)
+                            ,
+                      )),
             ),
           ),
 
@@ -103,79 +104,115 @@ class _CustomDrawerState extends State<CustomDrawer> {
           //   ),
           // ),
         ),
-        ListTile(
-          title: Text('Home',
+        Container(
+          decoration: BoxDecoration(  
+          border: Border(bottom: BorderSide(color: Colors.grey.shade400))  
+        ),
+          child: ListTile(
+            leading: Icon(Icons.home),
+            title: Text('Home',
+                style: TextStyle(
+                    color: greencolor,
+                    fontStyle: FontStyle.italic,
+                    fontSize: 20)),
+            trailing: Icon(Icons.arrow_forward, color: greencolor),
+            onTap: () {
+              Navigator.of(context).pushNamed("/homescreen");
+            },
+          ),
+        ),
+        Container(
+          decoration: BoxDecoration(  
+          border: Border(bottom: BorderSide(color: Colors.grey.shade400))  
+        ),
+          child: ListTile(
+            leading: Icon(Icons.card_giftcard),
+            title: Text(
+              'Your Orders',
               style: TextStyle(
-                  color: greencolor,
-                  fontStyle: FontStyle.italic,
-                  fontSize: 20)),
-          trailing: Icon(Icons.arrow_forward, color: greencolor),
-          onTap: () {
-            Navigator.of(context).pushNamed("/homescreen");
-          },
-        ),
-        ListTile(
-          title: Text(
-            'Your Orders',
-            style: TextStyle(
-                color: greencolor, fontStyle: FontStyle.italic, fontSize: 20),
+                  color: greencolor, fontStyle: FontStyle.italic, fontSize: 20),
+            ),
+            trailing: Icon(Icons.arrow_forward, color: greencolor),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => CartDetails()));
+            },
           ),
-          trailing: Icon(Icons.arrow_forward, color: greencolor),
-          onTap: () {
-            // Navigator.push(context,
-            //     MaterialPageRoute(builder: (context) => Orders()));
-          },
         ),
-        ListTile(
-          title: Text(
-            'Your Account',
-            style: TextStyle(
-                color: greencolor, fontStyle: FontStyle.italic, fontSize: 20),
-          ),
-          trailing: Icon(Icons.arrow_forward, color: greencolor),
-          onTap: () {
-            Navigator.of(context).pushNamed("/users");
-          },
+        Container(
+          decoration: BoxDecoration(  
+          border: Border(bottom: BorderSide(color: Colors.grey.shade400))  
         ),
-        ListTile(
-          title: Text(
-            'Settings',
-            style: TextStyle(
-                color: greencolor, fontStyle: FontStyle.italic, fontSize: 20),
+          child: ListTile(
+            leading: Icon(Icons.person),
+            title: Text(
+              'Your Account',
+              style: TextStyle(
+                  color: greencolor, fontStyle: FontStyle.italic, fontSize: 20),
+            ),
+            trailing: Icon(Icons.arrow_forward, color: greencolor),
+            onTap: () {
+              Navigator.of(context).pushNamed("/users");
+            },
           ),
-          trailing: Icon(Icons.arrow_forward, color: greencolor),
-          onTap: () {
-            Navigator.of(context).pushNamed("/settings");
-          },
         ),
-        ListTile(
-          title: Text(
-            'Contact Us',
-            style: TextStyle(
-                color: greencolor, fontStyle: FontStyle.italic, fontSize: 20),
-          ),
-          trailing: Icon(Icons.arrow_forward, color: greencolor),
-          onTap: () {
-             Navigator.of(context).pushNamed("/helpcenter");
-          },
+        Container(
+          decoration: BoxDecoration(  
+          border: Border(bottom: BorderSide(color: Colors.grey.shade400))  
         ),
-        ListTile(
-          title: Text(
-            'Logout',
-            style: TextStyle(
-                color: greencolor, fontStyle: FontStyle.italic, fontSize: 20),
+          child: ListTile(
+            leading: Icon(Icons.settings),
+            title: Text(
+              'Settings',
+              style: TextStyle(
+                  color: greencolor, fontStyle: FontStyle.italic, fontSize: 20),
+            ),
+            trailing: Icon(Icons.arrow_forward, color: greencolor),
+            onTap: () {
+              Navigator.of(context).pushNamed("/settings");
+            },
           ),
-          trailing: Icon(Icons.arrow_forward, color: greencolor),
-          onTap: () async {
-            /* bool signoutSuccess = await AuthProvider().logOut();
+        ),
+        Container(
+          decoration: BoxDecoration(  
+          border: Border(bottom: BorderSide(color: Colors.grey.shade400))  
+        ),
+          child: ListTile(
+            leading: Icon(Icons.contacts),
+            title: Text(
+              'Contact Us',
+              style: TextStyle(
+                  color: greencolor, fontStyle: FontStyle.italic, fontSize: 20),
+            ),
+            trailing: Icon(Icons.arrow_forward, color: greencolor),
+            onTap: () {
+               Navigator.of(context).pushNamed("/helpcenter");
+            },
+          ),
+        ),
+        Container(
+          decoration: BoxDecoration(  
+          border: Border(bottom: BorderSide(color: Colors.grey.shade400))  
+        ),
+          child: ListTile(
+            leading: Icon(Icons.lock),
+            title: Text(
+              'Logout',
+              style: TextStyle(
+                  color: greencolor, fontStyle: FontStyle.italic, fontSize: 20),
+            ),
+            trailing: Icon(Icons.arrow_forward, color: greencolor),
+            onTap: () async {
+              /* bool signoutSuccess = await AuthProvider().logOut();
 
-            if (signoutSuccess)*/
-            Navigator.of(context).pushNamedAndRemoveUntil(
-                '/login', (Route<dynamic> route) => false);
-            /*  else {
-              print("Error in SignOut.");
-            }*/
-          },
+              if (signoutSuccess)*/
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                  '/login', (Route<dynamic> route) => false);
+              /*  else {
+                print("Error in SignOut.");
+              }*/
+            },
+          ),
         ),
       ]),
     );

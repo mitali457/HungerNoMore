@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:newapp/Googlemapview/googlemapview.dart';
+
 import 'package:newapp/Utils/colors.dart';
+import 'package:newapp/Widget/googlemapview.dart';
 import 'package:newapp/Widget/timeline.dart';
 
 class Trackorder extends StatefulWidget {

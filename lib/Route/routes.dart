@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:newapp/Googlemapview/googlemapview.dart';
-import 'package:newapp/Screen/Cart.dart';
-import 'package:newapp/Screen/Cartdetails.dart';
-import 'package:newapp/Screen/Category.dart';
-import 'package:newapp/Screen/Login.dart';
-import 'package:newapp/Screen/Menu.dart';
-import 'package:newapp/Screen/Payment.dart';
-import 'package:newapp/Screen/Registration.dart';
-import 'package:newapp/Screen/ResetPassword.dart';
-import 'package:newapp/Screen/Restaurant_name.dart';
-import 'package:newapp/Screen/Settings.dart';
-import 'package:newapp/Screen/Trackorders.dart';
-import 'package:newapp/Screen/Useraccount.dart';
+
+
+import 'package:newapp/Screen/cartdetails.dart';
+import 'package:newapp/Screen/category.dart';
+import 'package:newapp/Screen/login.dart';
+import 'package:newapp/Screen/menu.dart';
+import 'package:newapp/Screen/ordernotify.dart';
+import 'package:newapp/Screen/payment.dart';
+import 'package:newapp/Screen/registration.dart';
+import 'package:newapp/Screen/resetpassword.dart';
+
+import 'package:newapp/Screen/settings.dart';
+import 'package:newapp/Screen/trackorders.dart';
+import 'package:newapp/Screen/useraccount.dart';
+import 'package:newapp/Screen/cart.dart';
 import 'package:newapp/Screen/helpcenter.dart';
+import 'package:newapp/Screen/popularfood.dart';
 import 'package:newapp/Screen/splash.dart';
 
-import 'package:newapp/Widget/Bottomnavigationbar.dart';
+import 'package:newapp/Widget/bottomnavigationbar.dart';
+import 'package:newapp/Widget/googlemapview.dart';
 
 
 class Routes {
@@ -29,15 +33,18 @@ class Routes {
     '/homescreen': (BuildContext context) => CustomBottomNavigationBar(),
     '/category': (BuildContext context) => Category(),
     '/menu': (BuildContext context) => MenuItem(),
-    '/cart':(BuildContext context)=>Cart(foodItem: null,) ,
+    '/order':(BuildContext context)=>Ordernotify(),
+    '/cart':(BuildContext context)=>Cart() ,
     '/cartdetails':(BuildContext context)=>CartDetails(),
     '/payment':(BuildContext context)=>Payment(),
     '/trackorders':(BuildContext context)=> Trackorder(),
-    '/restaurantname':(BuildContext context)=>RestaurantName(),
-    '/users':(BuildContext context)=> UserAccount(),
+    
+    '/users':(BuildContext context)=>  UserAccount (),
     '/settings':(BuildContext context)=> Settingtheme(),
     '/helpcenter':(BuildContext context)=>HelpCenter(),
     '/gmap':(BuildContext context)=> GoogleMapView(),
+
+    '/popularfooddetails':(BuildContext context)=> Popularfooddetails (),
 
 
     

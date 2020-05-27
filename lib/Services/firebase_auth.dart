@@ -1,16 +1,17 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:flutter/material.dart';
+
 
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:newapp/Model/user.dart';
+
 import 'package:newapp/Services/firebase_database.dart';
 
 class AuthenticationService{
   // SharedPreferences sharedPreferences;
  GoogleSignIn googleSignIn = GoogleSignIn();
   FirebaseAuth _auth = FirebaseAuth.instance;
-   Users user;
+  
+
   
     Future<FirebaseUser> getCurrentUser() async {
       FirebaseUser user = await _auth.currentUser();
@@ -84,8 +85,8 @@ class AuthenticationService{
       //       return false;
       //     }
     }
-    Future<String> signUp(String email, String password, String firstName,
-      String lastName, String phoneNumber) async {
+    Future<String> signUp(String email, String password, String name,
+      ) async {
     final databaseReference  =
         FirebaseDatabase.instance.reference().child('user');
     try {
@@ -93,11 +94,10 @@ class AuthenticationService{
           email: email, password: password);
       FirebaseUser user = result.user;
       await databaseReference.child(user.uid).set({
-        'first_name': firstName,
-        'last_name': lastName,
+        
+        'name': name,
         'password': password,
         'email_id': email,
-        'phone_no': phoneNumber,
         'profile_picture': ''
       });
 
@@ -110,63 +110,63 @@ class AuthenticationService{
 
 
 
-  Future<String> loginWithGoogle(BuildContext context) async {
-    final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
-    final GoogleSignInAuthentication googleSignInAuthentication =
-        await googleSignInAccount.authentication;
+  // Future<String> loginWithGoogle(BuildContext context) async {
+  //   final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
+  //   final GoogleSignInAuthentication googleSignInAuthentication =
+  //       await googleSignInAccount.authentication;
 
-    final AuthCredential credential = GoogleAuthProvider.getCredential(
-      accessToken: googleSignInAuthentication.accessToken,
-      idToken: googleSignInAuthentication.idToken,
-    );
+  //   final AuthCredential credential = GoogleAuthProvider.getCredential(
+  //     accessToken: googleSignInAuthentication.accessToken,
+  //     idToken: googleSignInAuthentication.idToken,
+  //   );
 
-    final AuthResult authResult = await _auth.signInWithCredential(credential);
-    final FirebaseUser fbuser = authResult.user;
-    if (fbuser != null) {
-      final databaseReference =
-          FirebaseDatabase.instance.reference().child('user');
-      await databaseReference.child(fbuser.uid).set({
-        'first_name': fbuser.displayName,
-        'email_id': fbuser.email,
-        'profile_picture': fbuser.photoUrl
-      });
-      var userData = await databaseReference.child(fbuser.uid).once().then((DataSnapshot snapshot)
-      {
-      print('Data : ${snapshot.value}');
-      return;
+  //   final AuthResult authResult = await _auth.signInWithCredential(credential);
+  //   final FirebaseUser fbuser = authResult.user;
+  //   if (fbuser != null) {
+  //     final databaseReference =
+  //         FirebaseDatabase.instance.reference().child('user');
+  //     await databaseReference.child(fbuser.uid).set({
+  //       'first_name': fbuser.displayName,
+  //       'email_id': fbuser.email,
+  //       'profile_picture': fbuser.photoUrl
+  //     });
+  //     var userData = await databaseReference.child(fbuser.uid).once().then((DataSnapshot snapshot)
+  //     {
+  //     print('Data : ${snapshot.value}');
+  //     return;
       
-      });
-      user = Users.fromJson(userData.data);
-      print(user.email);
-      // Navigator.pushNamedAndRemoveUntil(
-      //     context, RouteNames.HOME_SCREEN, (Route<dynamic> route) => false,
-      //     arguments: user);
-    }
+  //     });
+  //     user = Users.fromJson(userData.data);
+  //     print(user.email);
+  //     // Navigator.pushNamedAndRemoveUntil(
+  //     //     context, RouteNames.HOME_SCREEN, (Route<dynamic> route) => false,
+  //     //     arguments: user);
+  //   }
 
-    return 'signInWithGoogle succeeded: $user';
-  }
+  //   return 'signInWithGoogle succeeded: $user';
+  // }
 
-  void signOutGoogle() async {
-    await googleSignIn.signOut();
-  }
+  // void signOutGoogle() async {
+  //   await googleSignIn.signOut();
+  // }
   
-    // Future<bool> loginWithGoogle() async {
-    //   try {
-    //     GoogleSignIn _googleSignIn = GoogleSignIn();
-    //     GoogleSignInAccount account = await _googleSignIn.signIn();
-    //     if (account == null) return false;
-    //     AuthResult res =
-    //         await _auth.signInWithCredential(GoogleAuthProvider.getCredential(
-    //       idToken: (await account.authentication).idToken,
-    //       accessToken: (await account.authentication).accessToken,
-    //     ));
-    //     if (res.user == null) return false;
-    //     return true;
-    //   } catch (e) {
-    //     print("Error logging with google");
-    //     return false;
-    //   }
-    // }
+    Future<bool> loginWithGoogle() async {
+      try {
+        GoogleSignIn _googleSignIn = GoogleSignIn();
+        GoogleSignInAccount account = await _googleSignIn.signIn();
+        if (account == null) return false;
+        AuthResult res =
+            await _auth.signInWithCredential(GoogleAuthProvider.getCredential(
+          idToken: (await account.authentication).idToken,
+          accessToken: (await account.authentication).accessToken,
+        ));
+        if (res.user == null) return false;
+        return true;
+      } catch (e) {
+        print("Error logging with google");
+        return false;
+      }
+    }
   
 
 

@@ -58,6 +58,7 @@ class _RegistrationState extends State<Registration> {
         backgroundColor: Colors.white,
         key: scaffoldKey,
         appBar: AppBar(
+          centerTitle: true,
             //backgroundColor: greencolor,
             shape: CustomShapeBorder(),
             actions: <Widget>[
@@ -200,7 +201,7 @@ class _RegistrationState extends State<Registration> {
                               ),
                               Container(
                                 width: 150,
-                                height: 30,
+                                height: 35  ,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
                                 ),

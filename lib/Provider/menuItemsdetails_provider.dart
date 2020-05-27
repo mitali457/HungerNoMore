@@ -5,11 +5,14 @@ import 'package:newapp/Model/menuitems.dart';
 
 
 
+
 class Menudetails extends ChangeNotifier {
   Map<int, int> _cart = {};
 
   Map<int, int> get cart => _cart;
   List<Foods> selectedFooditem = [];
+  // List<PopularFoodTiles> selectedFooditem = [];
+
   // int get totalPrice =>
   //     selectedFooditem.fold(0, (total, current) => total + current.foodprice.);
 
@@ -27,6 +30,27 @@ class Menudetails extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+
+// void addCart(PopularFoodTiles popularfood) {
+//     if(selectedFooditem.contains(popularfood)){
+//       return;
+//     }
+//     print(addCart);
+//     print('addCart');
+
+//     selectedFooditem.add(popularfood);
+//     notifyListeners();
+//   }
+
+//   void clear1(index) {
+//     if (selectedFooditem.contains(index)) {
+//     selectedFooditem.remove(index);
+//       notifyListeners();
+//     }
+//   }
+
+
 }
   // addCart(Foods food, int index) {
   //   selectedFooditem.forEach((foodItem) {

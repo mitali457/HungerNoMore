@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:newapp/Screen/ResetPassword.dart';
+import 'package:newapp/Screen/resetpassword.dart';
 import 'package:newapp/Provider/login_provider.dart';
 import 'package:newapp/Services/firebase_auth.dart';
 import 'package:newapp/Utils/colors.dart';
@@ -29,7 +29,7 @@ class _LoginPageState extends State<Login> {
   @override
   void initState() {
     super.initState();
-    setData();
+   setData();
   }
 
   validateFromAndLogin() {
@@ -142,13 +142,13 @@ class _LoginPageState extends State<Login> {
                                 labelText: 'Password',
                                 icon: Icon(Icons.lock_outline,
                                     color: greencolor),
-                                suffixIcon: new GestureDetector(
+                                suffixIcon: GestureDetector(
                                   onTap: () {
                                     setState(() {
                                       _obscureText = !_obscureText;
                                     });
                                   },
-                                  child: new Icon(_obscureText
+                                  child: Icon(_obscureText
                                       ? Icons.visibility_off
                                       : Icons.visibility),
                                 )),
@@ -186,10 +186,10 @@ class _LoginPageState extends State<Login> {
                       ),
                     ),
                   ),
-                  new CheckboxListTile(
+                  CheckboxListTile(
                     value: checkValue,
                     onChanged: _onChanged,
-                    title: new Text("Remember me",style: TextStyle(color:Colors.blueGrey),),
+                    title: Text("Remember me",style: TextStyle(color:Colors.blueGrey),),
                     controlAffinity: ListTileControlAffinity.leading,
                   ),
                   Container(
@@ -198,7 +198,7 @@ class _LoginPageState extends State<Login> {
                         padding: EdgeInsets.only(top: 5, left: 10, right: 10),
                         child: RaisedButton(
                           shape: RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(40.0),
+                            borderRadius: BorderRadius.circular(40.0),
                           ),
                           color: greencolor,
                           onPressed: () async {
@@ -206,7 +206,7 @@ class _LoginPageState extends State<Login> {
                             onPressedLogin(context,emailController,passwordController);
                           },
                         
-                          child: new Text('Login',
+                          child: Text('Login',
                               style: TextStyle(
                                   fontSize: 20,
                                   color: Colors.white,
@@ -242,13 +242,14 @@ class _LoginPageState extends State<Login> {
                         Container(
                           padding: EdgeInsets.only(top: 7, left: 1, right: 27),
                           height: 40,
-                          width: 60,
+                          width: 100,
                           decoration: BoxDecoration(),
                           child: FlatButton(
                             color: Colors.white,
                             child: googlelogoinloginscreen,
+                            
                             onPressed: () async {
-                              bool res = (await AuthenticationService().loginWithGoogle(context)) as bool;
+                              bool res = (await AuthenticationService().loginWithGoogle()) ;
                               if (!res) print("error logging in with ");
                             },
                           ),

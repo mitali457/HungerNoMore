@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 class Cart extends StatefulWidget {
   final fooditem;
   
-  Cart({Key key, @required this.fooditem, foodItem}) : super(key: key);
+  Cart({Key key, @required this.fooditem, foodItem, String popularfooditem}) : super(key: key);
 
   @override
   _CartState createState() => _CartState();
@@ -25,6 +25,7 @@ class _CartState extends State<Cart> {
     return Scaffold(
       //backgroundColor: Colors.white,
       appBar: AppBar(
+    centerTitle: true,
         actions: <Widget>[
           Padding(
             padding: const EdgeInsets.all(10.0),
@@ -76,7 +77,7 @@ class _CartState extends State<Cart> {
         ),
         //backgroundColor: greencolor,
         elevation: 0.0,
-        centerTitle: true,
+        
       ),
       
       body: ListView(

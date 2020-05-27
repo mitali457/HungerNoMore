@@ -19,11 +19,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  firebase_core: ^0.4.4+3
+  firebase_core: ^0.4.0+9
   firebase_database: ^3.1.3
-  firebase_analytics: ^5.0.2
-  firebase_auth: ^0.15.5+3
-  firebase_messaging: ^6.0.13
+  firebase_analytics: ^5.0.11
+  firebase_auth:  ^0.16.0
+  firebase_messaging:  ^6.0.13
   firebase_storage: ^3.1.5
   google_sign_in: ^4.4.0
   cloud_firestore: ^0.13.4+2
@@ -38,6 +38,7 @@ dependencies:
   provider: ^4.0.4
   google_maps_flutter: ^0.5.25+3
   flutter_polyline_points: ^0.1.0
+  get_it: ^4.0.2
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -84,6 +85,38 @@ flutter:
    - assets/netbanking.png
    - assets/destination.png
    - assets/driving.png
+   - assets/propic.jpg
+   - images/popular_foods/ic_popular_food_1.png
+   - images/popular_foods/ic_popular_food_2.png
+   - images/popular_foods/ic_popular_food_3.png
+   - images/popular_foods/ic_popular_food_4.png
+   - images/ic_popular_food_5.png
+   - images/popular_foods/ic_popular_food_6.png
+   - images/bestfood/ic_best_food_1.jpeg
+   - images/bestfood/ic_best_food_2.jpeg
+   - images/bestfood/ic_best_food_3.jpeg
+   - images/bestfood/ic_best_food_4.jpeg
+   - images/bestfood/ic_best_food_5.jpeg
+   - images/bestfood/ic_best_food_6.jpeg
+   - images/bestfood/ic_best_food_7.jpeg
+   - images/bestfood/ic_best_food_8.jpeg
+   - images/bestfood/ic_best_food_9.jpeg
+   - images/bestfood/ic_best_food_10.jpeg
+  #  - images/menuitem/burger.jpeg
+   - images/menuitem/pasta.png
+   - images/menuitem/momos.png
+   - images/menuitem/paratha.png
+   - images/menuitem/dhosa.png
+   - images/menuitem/EggRoll.png
+   - images/menuitem/Idli.png
+   - images/menuitem/biryani.png
+
+
+
+
+
+
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

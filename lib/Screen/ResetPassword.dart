@@ -76,6 +76,7 @@ class _ResetPasswordPageState extends State<ResetPassword> {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(260.0),
           child: AppBar(
+            centerTitle: true,
             flexibleSpace: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[

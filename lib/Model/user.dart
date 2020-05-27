@@ -1,24 +1,85 @@
-class Users {
-  String firstName;
-  String lastName;
-  String profilePricture;
-  String email;
-  String password;
-  String phoneNo;
 
-  Users(this.firstName, this.lastName, this.profilePricture, this.email,
-      this.password, this.phoneNo);
 
-      Users.fromJson(Map<String, dynamic> json) {
-    firstName = (json['first_name'] == null) ? 'John' : json['first_name'];
-    lastName = (json['last_name'] == null) ? '' : json['last_name'];
-    email = (json['email_id'] == null) ? 'test@test.com' : json['email_id'];
-    password = (json['password'] == null) ? 'hello123' : json['password'];
-    phoneNo =
-        (json['phone_number'] == null) ? '99999999' : json['phone_number'];
-    profilePricture = (json['profile_picture'] == null ||
-            json['profile_picture'] == '')
-        ? 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
-        : json['profile_picture'];
+// class User {
+
+//   String _id;
+//   String _name;
+//   String _email;
+//   //String _mobile;
+
+//   User(this._id,this._name, this._email, {String uid},  );
+
+//   String get name => _name;
+
+//   String get email => _email;
+
+
+
+//   //String get mobile => _mobile;
+
+//   String get id => _id;
+
+//   User.fromSnapshot(DataSnapshot snapshot) {
+//     _id = snapshot.key;
+//     _name = snapshot.value['name'];
+//     _email = snapshot.value['email'];
+//      //_mobile = snapshot.value['mobile'];
+//   }
+
+// }
+
+
+class User {
+  String uid;
+   String email;
+   String name;
+   String photoUrl;
+  
+
+   User(data, {this.uid, this.email,this.name, this.photoUrl});
+
+    Map toMap(User user) {
+    var data = Map<String, dynamic>();
+    data['uid'] = user.uid;
+    data['email'] = user.email;
+     data['name'] = user.name;
+    data['photoUrl'] = user.photoUrl;
+    
+    return data;
+  }
+
+  User.fromMap(Map<String, dynamic> mapData) {
+    this.uid = mapData['uid'];
+    this.email = mapData['email'];
+    this.name = mapData['name'];
+    this.photoUrl = mapData['photoUrl'];
+     
   }
 }
+
+// class User {
+//   final String email;
+//   final String id;
+//   final String photoUrl;
+//   final String username;
+
+  
+//   const User(
+//       {this.username,
+//       this.id,
+//       this.photoUrl,
+//       this.email,
+      
+//       });
+
+//   factory User.fromDocument(DocumentSnapshot document) {
+//     return User(
+//       email: document['email'],
+//       username: document['username'],
+//       photoUrl: document['photoUrl'],
+//       id: document.documentID,
+     
+      
+//     );
+//   }
+// }

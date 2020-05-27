@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:newapp/Screen/Category.dart';
-import 'package:newapp/Screen/Home.dart';
-import 'package:newapp/Screen/Menu.dart';
+import 'package:newapp/Screen/category.dart';
+import 'package:newapp/Screen/home.dart';
+import 'package:newapp/Screen/menu.dart';
 import 'package:newapp/Utils/colors.dart';
 
 

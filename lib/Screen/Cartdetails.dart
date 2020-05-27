@@ -20,27 +20,32 @@ class _CartDetailsState extends State<CartDetails> {
 
     var cartitem = Provider.of<Menudetails>(context);
     int totalCount = cartitem.selectedFooditem.length;
+    
     for (int i = 0; i < cartitem.selectedFooditem.length; i++) {
       if (cartitem.selectedFooditem[i].foodname != null)
         total = total + cartitem.selectedFooditem[i].foodprice;
     }
+    
 
     print(totalCount);
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text("Your Cart"),
         automaticallyImplyLeading: true,
       ),
-      body: Column(
+      body: SingleChildScrollView(
+        child: Column(
         children: <Widget>[
           ListView.builder(
             shrinkWrap: true,
             itemCount: cartitem.selectedFooditem.length,
             itemBuilder: (context, index) {
-              // int cartIndex = cart.keys.toList()[index];
-              // int count = cart[cartIndex];
-
-              return Stack(alignment: Alignment.topRight, children: <Widget>[
+           print(cartitem.selectedFooditem[index].foodimage);
+              print("jjjjjjjjjjjj");
+             
+              return Stack(
+                alignment: Alignment.topRight, children: <Widget>[
                 Card(
                     child: Container(
                   height: 120,
@@ -55,20 +60,24 @@ class _CartDetailsState extends State<CartDetails> {
                       children: <Widget>[
                         Container(
                             height: 100,
-                            width: 150,
+                            width: 140,
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                boxShadow: [
-                                  BoxShadow(color: greencolor, blurRadius: 9)
-                                ],
-                                image: DecorationImage(
-                                    image: NetworkImage(cartitem
-                                        .selectedFooditem[index].foodimage),
-                                    fit: BoxFit.cover))),
+                              borderRadius: BorderRadius.circular(10),
+                            
+                              image: DecorationImage(
+                                   image: AssetImage(
+                                     cartitem .selectedFooditem[index].foodimage 
+                                
+                                     
+                                     
+                                  ),
+                                  fit: BoxFit.cover),
+                            ),),
+                       
                         Column(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: <Widget>[
-                              SizedBox(height:10),
+                              SizedBox(height: 10),
                               Text(cartitem.selectedFooditem[index].foodname,
                                   style: TextStyle(
                                     color: Colors.blueGrey,
@@ -83,35 +92,36 @@ class _CartDetailsState extends State<CartDetails> {
                                     fontWeight: FontWeight.bold,
                                   )),
                             ]),
-                        // Row(children: <Widget>[
-                        //   IconButton(
-                        //       icon: Icon(
-                        //         Icons.remove,
-                        //         color: Colors.blueGrey,
-                        //         size: 22,
-                        //       ),
-                        //       onPressed: () {
-                        //         // if (cartitem.selectedFooditem[index].foodname.length > 0) {
-                        //         //   setState(() {
-                        //         //     cartitem.selectedFooditem[index].foodname =
-                        //         //         cartitem.selectedFooditem[index] - 1;
-                        //         //   });
-                        //         // }
-                        //       }),
-                        //   Text('1',
-                        //       style: TextStyle(
-                        //         color: Colors.blueGrey,
-                        //         fontSize: 18.0,
-                        //         fontWeight: FontWeight.bold,
-                        //       )),
-                        //   IconButton(
-                        //       icon: Icon(
-                        //         Icons.add,
-                        //         color: Colors.blueGrey,
-                        //         size: 22,
-                        //       ),
-                        //       onPressed: () {}),
-                        // ]),
+                        
+                        Row(children: <Widget>[
+                          IconButton(
+                              icon: Icon(
+                                Icons.remove,
+                                color: Colors.blueGrey,
+                                size: 22,
+                              ),
+                              onPressed: () {
+                                // if (cartitem.selectedFooditem[index].foodname.length > 0) {
+                                //   setState(() {
+                                //     cartitem.selectedFooditem[index].foodname =
+                                //         cartitem.selectedFooditem[index] - 1;
+                                //   });
+                                // }
+                              }),
+                          Text('1',
+                              style: TextStyle(
+                                color: Colors.blueGrey,
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.bold,
+                              )),
+                          IconButton(
+                              icon: Icon(
+                                Icons.add,
+                                color: Colors.blueGrey,
+                                size: 22,
+                              ),
+                              onPressed: () {}),
+                        ]),
                       ]),
                 )),
                 Padding(
@@ -144,16 +154,16 @@ class _CartDetailsState extends State<CartDetails> {
                 height: 10,
               ),
               Text(
-               '₹ ${total.toString()}',
+                '₹ ${total.toString()}',
                 style: TextStyle(
                     fontSize: 20,
                     color: Colors.black,
                     fontWeight: FontWeight.bold),
-              )
+              ),
             ]),
           ),
         ],
-      ),
+      ),),
       bottomNavigationBar: _buildTotalContainer(context),
     );
   }

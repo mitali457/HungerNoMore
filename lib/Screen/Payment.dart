@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:newapp/Screen/ordernotify.dart';
 
-import 'package:newapp/Screen/Ordernotify%20.dart';
+
 import 'package:newapp/Utils/colors.dart';
 import 'package:newapp/Utils/images.dart';
 
@@ -57,6 +58,7 @@ class _PaymentState extends State<Payment> {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
         appBar: AppBar(
+          centerTitle: true,
          // backgroundColor: greencolor,
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
